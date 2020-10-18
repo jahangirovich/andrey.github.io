@@ -1,0 +1,565 @@
+@import "vars"
+@import "libs"
+@import 'contacts'
+@import 'gallery'
+@import 'services'
+@import 'team'
+@import 'our-works'
+
+///////////////////////////////////// Global /////////////////////////////////////////
+
+html
+    box-sizing: border-box
+
+*,*::before,*::after
+    box-sizing: inherit
+
+*
+    font-family: 'Source Sans Pro', sans-serif
+
+a
+    text-decoration: none
+
+h1,h2,h3,h4,h5,h6
+    margin: 0
+
+.working, .plasmolifting, .discound, .footer, .main-slick
+    margin-top: 200px
+
+.about-us, .advantages
+    padding-top: 100px
+    margin-top: 100px
+
+.button
+    padding: 18px 40px
+    background-color: $main-color
+    color: $black
+    border: none
+    outline: none
+    font-weight: 400
+    font-size: 20px
+    line-height: 23px
+    cursor: pointer
+    outline: none
+
+.btn_active
+    overflow: hidden
+    position: relative
+    span
+        z-index: 20
+    &:after
+        background: #fff
+        content: ""
+        height: 155px
+        left: -75px
+        opacity: .2
+        position: absolute
+        top: -50px
+        transform: rotate(35deg)
+        transition: all 2s cubic-bezier(0.19, 1, 0.22, 1)
+        width: 50px
+        z-index: -10
+    &:hover
+        z-index: 50
+        &:after
+            left: 120%
+            transition: all 2s cubic-bezier(0.19, 1, 0.22, 1)
+.btn_clicked
+    z-index: 50
+    &:after
+        left: 120%
+        transition: all 2s cubic-bezier(0.19, 1, 0.22, 1)
+
+.slick-dots
+    list-style-type: none
+    position: absolute
+    bottom: 20px
+    display: block
+    width: 100%
+    margin: 0
+    list-style: none
+    text-align: center
+
+    li
+        display: inline-block !important
+        color: black
+        margin: 10px
+        button
+            border: none
+            width: 1rem
+            height: 1rem
+            border-radius: 50%
+            text-indent: -9999px
+    .slick-active
+        button
+            background-color: #FFC52F
+
+.title
+    font-weight: 700
+    font-size: 32px
+    line-height: 40px
+    color: $black
+
+.arrow_down
+    border: 1px solid white
+    border-width: 0 2px 2px 0
+    justify-content: center
+    display: inline-block
+    padding: 4px
+    transition: 0.3s
+    transform: rotate(45deg)
+
+.pages
+    background-color: $main-bg
+    padding-bottom: 20px
+
+.popup_icon
+    font-size: 40px
+    position: absolute
+    right: 0
+    top: 0
+    cursor: pointer
+
+.popup
+    display: flex
+    position: fixed
+    width: 100%
+    height: 0
+    overflow: hidden
+    z-index: 1500
+    transition: height 0.5s
+    align-items: center
+    color: $black
+    left: 0
+    top: 0
+    background-color: white
+    &__title
+        font-size: 32px
+        line-height: 40px
+        position: relative
+        font-weight: 700
+        padding-left: 0
+    &__subtitle
+        padding-left: 0
+        margin-top: 30px
+        font-size: 18px
+        line-height: 23px
+        font-weight: 400
+    &__button
+        margin-top: 30px
+        button
+            padding: 18px 83px
+            float: right
+//////////////////////////////////// Styles ///////////////////////////////////////////
+
+.active__header
+    .active__menu
+        min-height: 100vh
+        display: none
+        background-color: $main-bg
+        padding-top: 50px
+        padding-bottom: 50px
+        width: 100%
+        top: 0
+        position: fixed
+        z-index: 100
+        .active__logo
+            position: absolute
+            top: 15px
+            left: 15px
+            width: 60%
+
+        .active__link
+            display: flex
+            flex-direction: column
+            margin-left: 50px
+            margin-top: 140px
+            a
+                margin-bottom: 40px
+                font-weight: 600
+                font-size: 24px
+                line-height: 30px
+                color: $white
+                text-decoration: none
+                outline: none
+                &:hover
+                    color: $white
+        
+
+.header
+    &__inner
+        display: flex
+        justify-content: space-between
+        padding-top: 20px
+        position: relative
+    &__navbar
+        display: flex
+        align-items: center
+        &__lang
+            display: flex
+            align-items: center
+            position: relative
+            span
+                color: $white
+                margin-right: 10px
+                font-weight: 400
+                font-size: 18px
+                line-height: 23px
+            
+
+    &__link
+        color: $white
+        font-weight: 400
+        font-size: 18px
+        line-height: 23px
+        text-decoration: none !important
+        outline: none
+        position: relative
+        transition: all 0.4s ease-out
+        &:hover
+            color: $white
+        & + .header__link
+            margin-left: 40px
+    &__link_active
+        &::after
+            display: block
+            position: absolute
+            left: 0
+            width: 0
+            height: 3px
+            margin-top: 2px
+            background-color: $main-color
+            content: ''
+            transition: width 0.4s ease-out
+        &:hover::after
+            width: 100%
+        &:hover
+            color: $main-color
+    &__link_current_active
+        &
+            color: $main-color
+        &::after
+            display: block
+            position: absolute
+            left: 0
+            width: 100%
+            height: 3px
+            margin-top: 2px
+            background-color: $main-color
+            content: ''
+            transition: width 0.4s ease-out
+
+    .hamburger
+        cursor: pointer
+        display: none
+        width: 34px
+        height: 18px
+        position: relative
+        z-index: 1215
+        -webkit-transition: all .5s ease
+        -moz-transition: all .5s ease
+        -ms-transition: all .5s ease
+        -o-transition: all .5s ease
+        transition: all .5s ease
+        span
+            top: 20px
+            display: block
+            transition: 0.3s
+            position: absolute
+            width: 0px
+            height: 0px
+            background-color: $white
+            &::before, &::after
+                content: ''
+                display: block
+                transition: 0.3s
+                position: absolute
+                width: 34px
+                height: 3px
+                background-color: $white
+            &::before
+                content: ''
+                transform: translateY(-6px)
+            &::after
+                content: ''
+                transform: translateY(6px)
+        &_active
+            span
+                position: fixed
+                height: 0
+                &::before, &::after
+                    width: 34px
+                    top: 20px
+                &::before
+                    -moz-transform: rotate(-45deg)
+                    -ms-transform: rotate(-45deg)
+                    -o-transform: rotate(-45deg)
+                    -webkit-transform: rotate(-45deg)
+                    transform: rotate(-45deg)
+                &::after
+                    -moz-transform: rotate(45deg)
+                    -ms-transform: rotate(45deg)
+                    -o-transform: rotate(45deg)
+                    -webkit-transform: rotate(45deg)
+                    transform: rotate(45deg)
+
+.main
+    min-height: 100vh
+    background-color: $main-bg
+    background-image: radial-gradient(50% 50% at 50% 50%, rgba(130, 155, 181, 0.35) 0%, rgba(130, 155, 181, 0) 100%)
+    &__inner
+        padding: 25vh 0
+        color: $white
+        position: relative
+        &__dropdown
+            position: absolute
+            top: 0
+            z-index: 2000
+            right: 0
+            height: 0
+            overflow: hidden
+            transition: height 1s
+            ul
+                list-style-type: none
+                li 
+                    padding: 10px 20px 10px 20px
+                    background-color: $white
+                    cursor: pointer
+                    position: relative
+                    transition: 0.5s
+                    color: #000
+                    &::after
+                        width: 0
+                        display: block
+                        height: 100%
+                        position: absolute
+                        top: 0
+                        left: 0
+                        content: ''
+                        background-color: $main-color
+                        transition: width 0.2s ease-out
+                    &:hover::after
+                        width: 5px
+                    &:hover
+                        background-color: #f2f3f5
+                        
+
+    &__title
+        font-weight: 900
+        font-size: 64px
+        line-height: 80px
+        padding-left: 0
+        margin-bottom: 30px
+    &__subtitle
+        font-size: 18px
+        font-weight: 400
+        line-height: 23px
+        margin-bottom: 30px
+    &__img
+        img
+            width: 100%
+
+.about-us
+    &__title
+        margin-bottom: 40px
+    &__description
+        display: flex
+        flex-direction: column
+        justify-content: center
+        color: $black
+        p
+            font-weight: 400
+            font-size: 18px
+            line-height: 23px
+            margin-bottom: 30px
+    &__button
+        button
+            padding: 18px 83px
+    &__img
+        position: relative
+        &::after
+            content: ''
+            background: #FFC52F
+            position: absolute
+            width: 399px
+            height: 281px
+            left: -15px
+            bottom: -30px
+            z-index: -1
+            border-top-left-radius: 18px
+            border-bottom-right-radius: 18px
+        img
+            width: 100%
+
+.working
+    &__wrapper
+        margin-top: 60px
+        position: relative
+    &__item
+        position: relative
+        & + .working__item
+            &::before
+                content: ''
+                width: 1px
+                height: 119px
+                background: #DADADA
+                position: absolute
+                left: -20px
+                top: 25px
+
+    &__number
+        color: $main-color
+        font-size: 64px
+        line-height: 80px
+        font-weight: 700
+    &__description
+        margin-top: 20px
+        font-size: 18px
+        font-weight: 400
+        line-height: 23px
+        color: $black
+        padding: 0
+
+.plasmolifting
+    padding: 100px 0
+    background: $main-bg
+    .title
+        color: $white
+    &__description
+        display: flex
+        flex-direction: column
+        align-items: center
+        justify-content: center
+    &__inner
+        color: $white
+    &__subtitle
+        margin-top: 30px
+        font-size: 18px
+        font-weight: 400
+        line-height: 23px
+    &__stages
+        margin-top: 30px
+        font-weight: 400
+        font-size: 18px
+        line-height: 23px
+        position: relative
+        p
+            & + p
+                margin-top: 60px
+    &__stages-1, &__stages-2, &__stages-3
+        &::before
+            position: absolute
+            width: 34px
+            height: 80px
+            font-weight: 700
+            font-size: 64px
+            line-height: 80px
+            color: rgba(#6F7B87, 1)
+            left: -20px
+    &__stages-1
+        &::before
+            content: '1'
+            top: -35px
+    &__stages-2
+        &::before
+            content: '2'
+            top: 70px
+    &__stages-3
+        &::before
+            content: '3'
+            top: 180px
+
+.advantages
+    &__descr
+        padding-left: 40px
+        position: relative
+        font-size: 18px
+        line-height: 23px
+        font-weight: 400
+        color: $black
+        &::after
+            content: ''
+            position: absolute
+            width: 20px
+            height: 3px
+            background-color: $main-color
+            left: 0
+            top: 10px
+        & + .advantages__descr
+            margin-top: 30px
+
+.discound
+    background-color: $main-bg
+    padding-bottom: 100px
+    padding-top: 100px
+    .title
+        color: $white
+    &__button
+        margin-top: 30px
+    &__descr
+        font-weight: 400
+        line-height: 23px
+        font-size: 18px
+        color: $white
+        p
+            padding: 0
+            margin: 0
+            & + p
+                margin-top: 30px
+
+.main-slick
+    position: relative
+    &__carousel
+        img
+            width: 100%
+    .slider-btn
+        border: none
+        outline: none
+        background: transparent
+        z-index: 5
+        position: absolute
+        cursor: pointer
+        top: calc(50% - 41px)
+        &__left
+            left: 40px
+        &__right
+            right: 40px
+    .slick-arrow
+        padding: 0
+
+.footer
+    padding-top: 150px
+    background-color: $main-bg
+    padding-bottom: 150px
+    color: $white
+    &__social
+        a
+            & + a
+                margin-left: 20px
+    &__logo
+        margin-bottom: 50px
+    &__link
+        margin-bottom: 20px
+        font-size: 18px
+        font-weight: 400
+        outline: none !important
+        text-decoration: none !important
+        color: #E0E5E8 !important
+        span
+            border-bottom: 1px solid $white
+    &__title
+        text-transform: uppercase
+        font-weight: 600
+        font-size: 18px
+        margin-top: 18px
+        margin-bottom: 50px
+    &__column
+        display: flex
+        flex-direction: column
+    .mobile-open
+        display: none
+    .blammo
+        position: absolute
+        bottom: 0
+
+@import "media"

@@ -1,0 +1,52 @@
+.team
+    padding-top: 100px
+    padding-bottom: 200px
+    &__inner
+        color: $black
+    &__title
+        font-weight: 900
+        padding-left: 0
+        font-size: 64px
+        line-height: 80px
+    &__subtitle
+        font-weight: 400
+        padding-left: 0
+        margin-top: 30px
+        font-size: 18px
+        line-height: 23px
+    &__box
+        margin-top: 100px
+    &__item
+        margin-bottom: 50px
+    &__name
+        margin-top: 25px
+        font-weight: 600
+        font-size: 18px
+        line-height: 25px
+        color: $black
+    &__position
+        margin-top: 15px
+        color: #888888
+        font-size: 16px
+        line-height: 23px
+        font-weight: 400
+    &__photo
+        display: inline-block
+        overflow: hidden
+        width: 100%
+        img
+            transition: 1s
+            display: block
+            &:hover
+                transform: scale(1.1)
+
+
+@media (max-width: 767px)
+    .team
+        padding-top: 60px
+        padding-bottom: 150px
+        &__title
+            font-size: 46px
+            line-height: 58px
+        &__box
+            margin-top: 60px
